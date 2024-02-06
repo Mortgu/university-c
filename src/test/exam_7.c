@@ -1,35 +1,24 @@
 #include <stdio.h>
 
-int function_1(int input);
+void printCross(unsigned int size);
 
-int function_2();
+int main() {
 
-int i;
-
-void on_enable() {
-    int j;
-    i = 5, j = 2;
-
-    printf("i ist %i, j ist %i\n", i, j);
-
-    i = function_1(j);
-    printf("i ist %i, j ist %i\n", i, j);
-
-    i = function_2();
-    printf("i ist %i, j ist %i\n", i, j);
+    return 0;
 }
 
-int function_1(int input) {
-    i = i * 2;
-    function_2();
-    return input + 5;
-}
-
-int function_2() {
-    int j;
-    for (j = 0; j < 10; j++) {
-        i += 1;
+void printCross(unsigned int size) {
+    for (int i = 0; i < size; i++) {
+        for (int j = 0; j < size; j++) {
+            //printf("(%i,%i)", i, j);
+            if (i == j) {
+                printf("*");
+            } else if (j == (size - 1 - i)) {
+                printf("*");
+            } else {
+                printf(" ");
+            }
+        }
+        printf("\n");
     }
-
-    return i;
 }

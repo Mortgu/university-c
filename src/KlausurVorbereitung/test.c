@@ -4,81 +4,8 @@
 #include <math.h>
 #include <time.h>
 
-int factorial(int number) {
-    if (number == 1) {
-        return 1;
-    } else {
-        return number * factorial(number-1);
-    }
-}
+#include "Exam.h";
 
-unsigned int multiply(unsigned int a, unsigned int b) {
-    if (b == 1) {
-        return a;
-    } else {
-        return a + multiply(a, b-1);
-    }
-}
-
-int myOwnStrLen(const char *string) {
-    int length;
-
-    for (length = 0; string[length] != 0; length++);
-
-    return length;
-}
-
-typedef struct Point {
-    double x;
-    double y;
-} Point;
-
-typedef struct Rectangle {
-    Point upperRightCorner;
-    Point lowerLeftCorner;
-} Rectangle;
-
-int is_square(Rectangle *rectangle) {
-    double x_diff = fabs(rectangle->upperRightCorner.x - rectangle->lowerLeftCorner.x);
-    double y_diff = fabs(rectangle->upperRightCorner.y - rectangle->lowerLeftCorner.y);
-
-    if (x_diff == y_diff) return 1;
-    return 0;
-}
-
-Rectangle *surround(Point points[], int n) {
-    Rectangle *rectangle = (Rectangle*) malloc(sizeof(struct Rectangle));
-
-    if (rectangle == NULL) {
-        printf("Error allocating memory for struct Rectangle!");
-        return NULL;
-    }
-    rectangle->upperRightCorner.x = points[0].x;
-    rectangle->upperRightCorner.y = points[0].y;
-
-    rectangle->lowerLeftCorner.x = points[0].x;
-    rectangle->lowerLeftCorner.y = points[0].y;
-
-    for (int i = 0; i <= n; i++) {
-        if (rectangle->upperRightCorner.x < points[i].x) {
-            rectangle->upperRightCorner.x = points[i].x;
-        }
-
-        if (rectangle->upperRightCorner.y < points[i].y) {
-            rectangle->upperRightCorner.y = points[i].y;
-        }
-
-        if (rectangle->lowerLeftCorner.x > points[i].x) {
-            rectangle->lowerLeftCorner.x = points[i].x;
-        }
-
-        if (rectangle->lowerLeftCorner.y > points[i].y) {
-            rectangle->lowerLeftCorner.y = points[i].y;
-        }
-    }
-
-    return rectangle;
-}
 
 int main() {
     unsigned int result = multiply(15, 2);
@@ -124,4 +51,89 @@ int main() {
     printf("Dieses Programm hat %f Sekunden gebraucht\n", time_taken);
 
     return 0;
+}
+
+
+int factorial(int number) {
+    if (number == 1) {
+        return 1;
+    } else {
+        return number * factorial(number-1);
+    }
+}
+
+unsigned int multiply(unsigned int a, unsigned int b) {
+    if (b == 1) {
+        return a;
+    } else {
+        return a + multiply(a, b-1);
+    }
+}
+
+int myOwnStrLen(const char *string) {
+    int length;
+
+    for (length = 0; string[length] != 0; length++);
+
+    return length;
+}
+
+int is_square(Rectangle *rectangle) {
+    double x_diff = fabs(rectangle->upperRightCorner.x - rectangle->lowerLeftCorner.x);
+    double y_diff = fabs(rectangle->upperRightCorner.y - rectangle->lowerLeftCorner.y);
+
+    if (x_diff == y_diff) return 1;
+    return 0;
+}
+
+Rectangle *surround(Point points[], int n) {
+    Rectangle *rectangle = (Rectangle*) malloc(sizeof(struct Rectangle));
+
+    if (rectangle == NULL) {
+        printf("Error allocating memory for struct Rectangle!");
+        return NULL;
+    }
+    rectangle->upperRightCorner.x = points[0].x;
+    rectangle->upperRightCorner.y = points[0].y;
+
+    rectangle->lowerLeftCorner.x = points[0].x;
+    rectangle->lowerLeftCorner.y = points[0].y;
+
+    for (int i = 0; i <= n; i++) {
+        if (rectangle->upperRightCorner.x < points[i].x) {
+            rectangle->upperRightCorner.x = points[i].x;
+        }
+
+        if (rectangle->upperRightCorner.y < points[i].y) {
+            rectangle->upperRightCorner.y = points[i].y;
+        }
+
+        if (rectangle->lowerLeftCorner.x > points[i].x) {
+            rectangle->lowerLeftCorner.x = points[i].x;
+        }
+
+        if (rectangle->lowerLeftCorner.y > points[i].y) {
+            rectangle->lowerLeftCorner.y = points[i].y;
+        }
+    }
+
+    return rectangle;
+}
+
+// Function that prints a cross in the size of an unsigned number
+
+void printCross(unsigned int size) {
+    for (int i = 0; i < size; i++) {
+        for (int j = 0; j < size; j++) {
+            //printf("(%i,%i)", i, j);
+            if (i == j) {
+                printf("*");
+            } else if (j == (size - 1 - i)) {
+                printf("*");
+            } else {
+                printf(" ");
+            }
+        }
+        printf("\n");
+    }
 }

@@ -39,12 +39,15 @@ int main(int argc, char *argv[]) {
         printf("%i\n", list[i]);
     }
 
-    int i = 257 + 256;
+    int i = 255;
     int* p_i = &i;
-    printf("%p = %d\n", p_i, *((char*) p_i));
+    printf("%p = %d\n", p_i, *p_i);
     printf("%p = %d\n", ((char*) p_i) + 1, *(((char*) p_i) + 1));
     printf("%p = %d\n", ((char*) p_i) + 2, *(((char*) p_i) + 2));
     printf("%p = %d\n", ((char*) p_i) + 3, *(((char*) p_i) + 3));
+
+    void* p = (int*) &i;
+    printf("%p", p);
 
     return EXIT_SUCCESS;
 }

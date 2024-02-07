@@ -1,12 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#include <string.h>
 
 #include "Exam.h"
 
 int main(int argc, char *argv[]) {
     unsigned int modResult = modulo(8, 4);
-    // printf("Rest: %i", modResult);
+    printf("Rest: %i\n", modResult);
 
     char* string = "string_length";
     printf("Length of string: %i\n", myOwnStrLen(string));
@@ -25,6 +26,25 @@ int main(int argc, char *argv[]) {
            surroundingRectangle->lowerLeftCorner.y);
 
     free(surroundingRectangle);
+
+    int compareResult = _strcmp_("compareMe", "compareMd");
+    printf("Strings are equal: %s\n", compareResult == 0 ? "true" : "false");
+
+    //printNumberMod2(4);
+
+    int list[4] = {1, 45, 2, 5};
+    swapElements(&list[1], &list[2]);
+
+    for (int i = 0; i < 4; i++) {
+        printf("%i\n", list[i]);
+    }
+
+    int i = 257 + 256;
+    int* p_i = &i;
+    printf("%p = %d\n", p_i, *((char*) p_i));
+    printf("%p = %d\n", ((char*) p_i) + 1, *(((char*) p_i) + 1));
+    printf("%p = %d\n", ((char*) p_i) + 2, *(((char*) p_i) + 2));
+    printf("%p = %d\n", ((char*) p_i) + 3, *(((char*) p_i) + 3));
 
     return EXIT_SUCCESS;
 }
@@ -145,11 +165,49 @@ Rectangle* surround(Point points[], int n) {
 }
 
 /*
- * Exercise ?: A function to get the length of a string without the \0 symbol
- */
+* Exercise ?: A function to get the length of a string without the \0 symbol
+*/
 
 int myOwnStrLen(const char* string) {
-    int length;
-    for (length = 0; string[length] != 0; length++);
+    int length = 0;
+    // for (length = 0; string[length] != 0; length++);
+    // oder
+    while (string[length] != 0) length++;
     return length;
+}
+
+/*
+ * Task 1a: PG1 Fischer 2021 WS PK
+ */
+
+int _strcmp_(char* a, char* b) {
+    if (strlen(a) != strlen(b)) {
+        return -1;
+    }
+
+    for (int i = 0; a[i] != 0; i++) {
+        if (a[i] != b[i]) return -1;
+    }
+
+    return 0;
+}
+
+/*
+* Exercise 4 (1. Wiederholung Kontrollstrukturen)
+*/
+
+void printNumberMod2(int number) {
+    for (int i = -number; i <= number; i+=2) {
+        printf("%i ", i);
+    }
+}
+
+/*
+ * Swap Elements
+ */
+
+void swapElements(int* indexA, int* indexY) {
+    int temp = *indexA;
+    *indexA = *indexY;
+    *indexY = temp;
 }

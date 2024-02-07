@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <assert.h>
-#include "src/struct_arrays/StructArrays.h"
 
 unsigned int maxEvenRec(unsigned int arr[], int index, int size) {
     int evenOne = 0;

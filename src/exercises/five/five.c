@@ -1,25 +1,18 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-
-void on_enable() {
-    char input[100];
-    int* array = (int *) calloc(5, sizeof(int));
-
-    if (!array) {
-        printf("Can't initialize array! Failed to allocate memory!");
-        return;
+int i;
+void int_ausgeben(void) {
+    printf("%d\n", i);
+}
+int Schleife(int Zahl) {
+    for (i = 1; i < 3; i++) {
+        Zahl += i; // 8
     }
-
-    while (strcmp("exit", input) != 0) {
-        scanf("%s", input);
-
-        if (atoi(input) != 0) {
-            *(array+ sizeof(array) + 1) = atoi(input);
-        }
-    }
-
-    for (int i = 0; i < sizeof(array) / sizeof(int); i++) {
-        printf("%d ", array[i]);
-    }
+    int_ausgeben();
+    return Zahl;
+}
+int main() {
+    i = 5;
+    i = Schleife(i);
+    int_ausgeben();
+    return 0;
 }

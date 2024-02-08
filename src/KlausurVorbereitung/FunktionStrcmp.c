@@ -10,19 +10,20 @@ typedef struct Person {
     char lastName[30];
 } Person;
 
-struct Person createPerson(char* firstN, char* lastN, int age) {
-    Person *person = (Person*) malloc(sizeof(Person));
+struct Person *createPerson(char* firstN, char* lastN, int age) {
+    Person *person = malloc(sizeof(Person));
 
     if (person == NULL) {
         printf("Failed to allocate memory for person.");
-        return *(person = NULL);
+        free(person);
+        return NULL;
     }
 
     person->age = age;
     strcpy(person->firstName, firstN);
     strcpy(person->lastName, lastN);
 
-    return *person;
+    return person;
 }
 
 int main() {

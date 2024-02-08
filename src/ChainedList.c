@@ -20,7 +20,7 @@ int main() {
     current->shares = 1234;
     current->price = 1234.10;
 
-    current->next = (struct Stock *) (struct Stock *) malloc(sizeof(struct Stock));
+    current->next = malloc(sizeof(struct Stock));
 
     if (!current->next) {
         return 1;

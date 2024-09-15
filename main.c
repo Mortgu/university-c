@@ -20,11 +20,9 @@ unsigned int maxEvenRec(unsigned int arr[], int index, int size) {
 }
 
 int main(void) {
-    //unsigned int arr[15] = {100, 23, 34, 11, 12};
-
-   // printf("%i", maxEvenRec(arr, 0, 5));
+    unsigned int arr[15] = {100, 23, 34, 11, 12};
+    printf("%i", maxEvenRec(arr, 0, 5));
 
    // assert(maxEvenRec(arr, 0, 5) == 100);
-   StructArrays();
 }
 
